@@ -1,0 +1,24 @@
+.counter-red {
+    background-color:#d63031;
+}
+.counter-orange {
+    background-color:#ff9f43;
+}
+.counter-purple{
+    background-color:#5f27cd;
+}
+.counter-yellow {
+    background-color:#feca57;
+}
+.counter-blue {
+    background-color:#2e86de;
+}
+
+.counter-green {
+    background-color:#10ac84;
+}
+div.counter{
+    width:30px;
+    height:30px;
+    border-radius:100%;
+}
