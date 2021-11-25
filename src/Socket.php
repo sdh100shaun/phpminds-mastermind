@@ -26,8 +26,9 @@ class Socket implements MessageComponentInterface {
     public function onMessage(ConnectionInterface $from, $msg) {
         foreach ($this->clients as $client) {
             if ($from === $client) {
-                $result = $this->masterMind->play(json_decode($msg, true));
-                $client->send(json_encode($result));
+                $sequence = explode(',', $msg);
+                $result = $this->masterMind->play($sequence);
+                $client->send(json_encode($result, JSON_THROW_ON_ERROR));
             }
         }
     }
