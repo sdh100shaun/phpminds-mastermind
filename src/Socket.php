@@ -24,11 +24,19 @@ class Socket implements MessageComponentInterface {
     }
 
     public function onMessage(ConnectionInterface $from, $msg) {
+
         foreach ($this->clients as $client) {
-            if ($from === $client) {
-                $result = $this->masterMind->play(json_decode($msg, true));
-                $client->send(json_encode($result));
+            if( $from === $client) {
+                $this->masterMind->play(json_decode($msg, true));
             }
+        }
+        $this->updateClients();
+    }
+
+    private function updateClients():void
+    {
+        foreach ($this->clients as $client) {
+            $client->send(json_encode($this->masterMind->result));
         }
     }
 

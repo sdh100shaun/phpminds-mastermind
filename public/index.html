@@ -1,26 +1,84 @@
-<html>
+<html lang="en">
 <head>
-    <style>
-        input, button { padding: 10px; }
-    </style>
+<meta charset="utf-8">
+<title>HTML</title>
+<link rel="stylesheet" href="game.css">
+    <script type="module" src="main.js"></script>
 </head>
 <body>
-<input type="text" id="message" />
-<button onclick="transmitMessage()">Send</button>
-<script>
-    // Create a new WebSocket.
-    var socket  = new WebSocket('ws://127.0.0.1:8080');
+   <h2>PHPMinds - Mind Games - Mastermind </h2>
+   <button onclick="mm.sendMessage()" >Press me</button>
+   <div class="row">
+	  <div class="column">
+	   <h2> Counters </h2>
+	   <ul>
+            <li><span class="counter counter-green">0</span></li>
+            <li><span class="counter counter-yellow">0</span></li>
+            <li><span class="counter counter-blue">0</span></li>
+            <li><span class="counter counter-red">0</span></li>
+            <li><span class="counter counter-orange">0</span></li>
+            <li><span class="counter counter-purple">0</span></li>
+       </ul>
+	  </div>
+	  <div class="column">
+	   <h2> MASTERMIND </h2>
+        <table class="table">
+            <tr>
+                <th></th>
+                <th>X</th>
+                <th>X</th>
+                <th>X</th>
+                <th>X</th>
+            </tr>
+            <tr>
+                <td class="number"></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+             </tr>
+             <tr>
+                 <td class="number"></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+             </tr>
+             <tr>
+                 <td class="number"></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+             </tr>
+             <tr>
+                 <td class="number"></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+             </tr>
+            <tr>
+                <td class="number"></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+            </tr>
+            <tr>
+                <td class="number"></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+            </tr>
+        </table>
+          <div class="checker">
+                <a href="#" class="action-button shadow animate green">Check</a>
+          </div>
+	  </div>
 
-    // Define the
-    var message = document.getElementById('message');
+	</div>
 
-    function transmitMessage() {
-        socket.send("{\"0\":\"red\", \"1\":\"green\", \"2\":\"purple\", \"3\":\"yellow\"}");
-    }
-
-    socket.onmessage = function(e) {
-        alert( e.data );
-    }
-</script>
 </body>
 </html>

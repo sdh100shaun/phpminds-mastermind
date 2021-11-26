@@ -1,24 +1,154 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&family=Roboto:ital,wght@1,100&display=swap');
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Oswald', sans-serif;
+}
+
+body {
+    background-color: #fafafa;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    
+}
+li {
+    float: left;
+    margin: 0.5em;
+}
+span.counter{
+    width:2.5em;
+    height: 2.5em;
+    border-radius:100%;
+    display:inline-block;
+}
+
+
 .counter-red {
     background-color:#d63031;
+    color:#d63031;
 }
 .counter-orange {
     background-color:#ff9f43;
+    color:#ff9f43;
 }
 .counter-purple{
     background-color:#5f27cd;
+    color:#5f27cd;
 }
 .counter-yellow {
     background-color:#feca57;
+    color:#feca57;
 }
 .counter-blue {
     background-color:#2e86de;
+    color:#2e86de;
 }
 
 .counter-green {
     background-color:#10ac84;
+    color:#10ac84;
 }
-div.counter{
-    width:30px;
-    height:30px;
-    border-radius:100%;
+.counter-white {
+    background-color:#ffffff;
+    color:#ffffff;
+}
+.row {
+    display: grid;
+    grid-template-columns: 33.334% 66.667%;
+    min-height: 40em;
+  }
+.column {
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #d3d3d3;
+    margin: 5px;
+}
+table {
+    margin: auto;
+    width: 60%;
+    counter-reset: row-num -1;
+    padding: 1.5em;
+    border: #fafafa 1px solid;
+}
+td {
+    background-color: #d3d3d3;
+
+}
+th {
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: large;
+    width: 3em;
+    height: 3em;
+}
+
+td.number {
+    display: table-cell;
+    padding: 0.1em;
+    text-align: center;
+    width: 3em;
+    height: 3em;
+}
+
+table tr {
+    counter-increment: row-num;
+}
+table tr td:first-child::before {
+    content: counter(row-num) ". ";
+}
+td {
+    display: table-cell;
+    padding: 0.1em;
+    text-align: center;
+    width: 3em;
+    height: 3em;
+    margin: 0.9em;
+}
+
+
+.animate
+{
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s;
+}
+
+.action-button
+{
+    position: relative;
+    padding: 10px 40px;
+    margin: 30px 10px 10px 0px;
+    border-radius: 3px;
+    font-size: 18px;
+    font-family: 'Oswald', sans-serif;
+    color: #FFF;
+    text-decoration: none;
+}
+.action-button:active
+{
+    transform: translate(0px,5px);
+    -webkit-transform: translate(0px,5px);
+    border-bottom: 1px solid #d3d3d3;
+}
+
+.checker {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    padding-top: 1em;
+}
+.green
+{
+    background-color: #2ecc71;
+    border-bottom: 10px solid #27ae60;
+    text-shadow: 0px -2px #27ae60;
 }

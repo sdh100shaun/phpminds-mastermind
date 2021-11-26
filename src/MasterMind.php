@@ -11,10 +11,12 @@ class MasterMind
 
     public function __construct(
         public int $numberOfChances,
-        private int $turn = 0
+        private int $turn = 0,
+        public array $result = [],
     ) {
         $gamePegs = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
         $this->sequence = [];
+
         shuffle($gamePegs);
         for ( $i = 0 ; $i < 4 ; $i++ ) {
             $this->sequence[$i] = array_pop($gamePegs);
@@ -68,7 +70,8 @@ class MasterMind
             return [];
         }
         shuffle($correct);
-        return ['sequence' => $this->getSequenceCode(), 'turn'=>$this->turn, 'correct' =>$correct];
+        $this-> result = ['sequence' => $this->getSequenceCode(), 'turn'=>$this->turn, 'correct' =>$correct];
+        return  $this->result;
     }
 
     /**
