@@ -3,19 +3,17 @@
     <style>
         input, button { padding: 10px; }
     </style>
+    <meta charset="UTF-8">
 </head>
 <body>
-<input type="text" id="message" />
-<button onclick="transmitMessage()">Send</button>
+<input type="text" id="message" placeholder="Colour sequence separated by comma" />
+<button onclick="transmitMessage()">Send Sequence</button>
 <script>
     // Create a new WebSocket.
     var socket  = new WebSocket('ws://127.0.0.1:8080');
-
-    // Define the
-    var message = document.getElementById('message');
-
     function transmitMessage() {
-        socket.send("{\"0\":\"red\", \"1\":\"green\", \"2\":\"purple\", \"3\":\"yellow\"}");
+        // socket.send("{\"0\":\"red\", \"1\":\"green\", \"2\":\"purple\", \"3\":\"yellow\"}");
+        socket.send(document.getElementById('message').value);
     }
 
     socket.onmessage = function(e) {
