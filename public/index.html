@@ -7,7 +7,6 @@
 </head>
 <body>
    <h2>PHPMinds - Mind Games - Mastermind </h2>
-   <button id="btn" >Press me</button>
    <div class="row">
 	  <div class="column">
 	   <h2> Counters </h2>
@@ -22,7 +21,7 @@
 	  </div>
 	  <div class="column">
 	   <h2> MASTERMIND </h2>
-        <table class="table">
+        <table class="table" id="board">
             <tr>
                 <th></th>
                 <th>X</th>
@@ -74,7 +73,7 @@
             </tr>
         </table>
           <div class="checker">
-                <a href="#" class="action-button shadow animate green">Check</a>
+                <a href="#" id="btn" class="action-button shadow animate green">Check</a>
           </div>
 	  </div>
 
