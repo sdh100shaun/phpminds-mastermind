@@ -14,9 +14,9 @@ const sendMessage = (message) => {
     ws.send(message);
 }
 
-const bindCheck = (button, data ) => {
-    button.addEventListener('click', function () {
-        sendMessage("{\"0\":\"red\", \"1\":\"green\", \"2\":\"purple\", \"3\":\"yellow\"}");
+const bindCheck = ( button, callback ) => {
+    button.addEventListener('click', function (e) {
+        callback(e.target.dataset.guess);
     });
 }
 

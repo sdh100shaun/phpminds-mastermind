@@ -26,15 +26,15 @@ const bindDrop = () => {
 const handleDrop = (e) =>{
     e.preventDefault();
     console.log(e, dragSrcEl);
+    let parent = e.target.parentNode;
     if (dragSrcEl !== e.target) {
         e.target.classList.add(dragSrcEl.classList[0]);
+        e.target.classList.remove('counter-white');
     }
-    let parent = e.target.parentNode;
-    if( parent.classList.contains('row-complete')){
-        const event = new CustomEvent('row-complete', { detail:{ row: parent.parentNode }});
-        event.initEvent('row-complete', true, true);
+
+        const event = new CustomEvent('row-update', { detail:{ row: parent.parentNode }});
+        event.initEvent('row-update', true, true);
         parent.dispatchEvent(event);
-    }
 }
 
 const handleDragEnter = (event) =>{

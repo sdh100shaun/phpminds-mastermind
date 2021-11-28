@@ -1,4 +1,4 @@
-import {init, ws, bindCheck} from './message';
+import {init, bindCheck, sendMessage} from './message';
 import {writeBoard, saveState, setCompleteListener} from './state';
 import { bind, bindDrop } from './dragdrop';
 
@@ -9,8 +9,8 @@ writeBoard(document.getElementById('board'));
 
 bind();
 bindDrop();
+bindCheck(document.getElementById('btn'), sendMessage);
 
-bindCheck(document.getElementById('btn'), {});
 setCompleteListener();
 
 init(url, function (e) {

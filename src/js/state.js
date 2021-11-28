@@ -5,7 +5,7 @@ const saveState = (board) => {
     for (let i = 0, row; row = board.rows[i]; i++) {
         state[i] = row;
         for (let j = 0, col; col = row.cells[j]; j++) {
-            state[i][j] = col.innerHTML.replace(/counter-white/g, 'counter-red');
+            state[i][j] = col.innerHTML;
         }
     }
     ls.set('state', state);
@@ -15,7 +15,7 @@ const readState = () => {
     return ls.get('state');
 }
 
-const writeBoard = ( board ) => {
+const writeBoard = (board) => {
     let state = readState()
     for (const stateKey in state) {
         if (state.hasOwnProperty(stateKey)) {
@@ -29,18 +29,30 @@ const writeBoard = ( board ) => {
 
 const setRowClasses = (board, turn) => {
     for (let i = 0, row; row = board.rows[i]; i++) {
-        if ( i === (turn + 2 )) {
-        row.classList.add('dropzone');
+        if (i === (turn + 2)) {
+            row.classList.add('dropzone');
         }
     }
 }
 
 const setCompleteListener = () => {
     let board = document.getElementById('board');
-    board.addEventListener('row-complete', ( e) => {
-        board.classList.add('complete');
-        if ( e.detail.winner) {
-            board.classList.add('winner');
+    board.addEventListener('row-update', (e) => {
+
+        if (e.detail.row) {
+            //check to see if the row is complete and if so, bind check
+            let found = {};
+            for (const children in e.detail.row.cells) {
+                if (e.detail.row.cells[children].innerHTML
+                    && e.detail.row.cells[children].innerHTML.match(/counter\-[^white]/)) {
+                    found[children] = (e.detail.row.cells[children].innerHTML.match(/\-([^white].*)\"/)[1])
+                }
+            }
+
+            if (Object.keys(found).length === 4) {
+                board.classList.add('complete');
+                document.getElementById('btn').setAttribute('data-guess',JSON.stringify(found));
+            }
         }
     });
 }

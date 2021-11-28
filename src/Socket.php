@@ -29,6 +29,7 @@ class Socket implements MessageComponentInterface {
         } else {
             foreach ($this->clients as $client) {
                 if ($from === $client) {
+                    echo "Sending to client: " . $msg . "\n";
                     $this->masterMind->play(json_decode($msg, true));
                 }
             }
