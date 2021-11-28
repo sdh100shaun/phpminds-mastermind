@@ -24,6 +24,7 @@ class Socket implements MessageComponentInterface {
     }
 
     public function onMessage(ConnectionInterface $from, $msg) {
+
         if ($msg === '__ping__') {
             $from->send('__pong__');
         } else {
@@ -41,6 +42,15 @@ class Socket implements MessageComponentInterface {
         foreach ($this->clients as $client) {
             $client->send(json_encode($this->masterMind->result));
         }
+    }
+
+    private function parseMessage($msg): array
+    {
+        if (is_array($msg)) {
+            return $msg;
+        }
+
+        return array_map('trim', explode(',', $msg));
     }
 
     public function onClose(ConnectionInterface $conn) {
