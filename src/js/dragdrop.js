@@ -1,20 +1,57 @@
+let dragSrcEl = null;
+
 const setDraggable = (element, draggable) => {
-  element.draggable = draggable;
+    element.draggable = draggable;
 };
 
-const bind = (handleDragStart, dragend) => {
+const bind = () => {
     let items = document.querySelectorAll('[draggable]');
-    items.forEach(function(item) {
+    items.forEach(function (item) {
         item.addEventListener('dragstart', handleDragStart, false);
         item.addEventListener('dragend', dragend, false);
     });
 }
 
-const bindDrop = (item, handleDrop, handleDragEnter) => {
-    console.log(item);
-    item.addEventListener('drop', handleDrop, false);
-    item.addEventListener('dragenter', handleDragEnter, false);
-    item.addEventListener('dragover', function (e){ e.preventDefault();}, false);
+const bindDrop = () => {
+    let items = document.querySelectorAll('.dropzone');
+    items.forEach(function (item) {
+        item.addEventListener('drop', handleDrop, false);
+        item.addEventListener('dragenter', handleDragEnter, false);
+        item.addEventListener('dragover', function (e) {
+            e.preventDefault();
+        }, false);
+    });
 }
 
-export  { bind, setDraggable, bindDrop };
+const handleDrop = (e) =>{
+    e.preventDefault();
+    console.log(e, dragSrcEl);
+    if (dragSrcEl !== e.target) {
+        e.target.classList.add(dragSrcEl.classList[0]);
+    }
+}
+
+const handleDragEnter = (event) =>{
+    const target = event.target;
+    event.preventDefault();
+    console.log(event, dragSrcEl, target);
+    if (target) {
+        // Set the dropEffect to move
+        event.dataTransfer.dropEffect = 'move';
+        const currentCounterClass = target.classList[0];
+        target.classList.add(currentCounterClass);
+    }
+}
+
+const dragend = (e) => {
+    e.preventDefault();
+}
+
+const handleDragStart = (e) => {
+    dragSrcEl = e.target;
+    e.dataTransfer.setData('text/html', e.target.innerHTML);
+    console.log(e, dragSrcEl);
+}
+
+
+export {bind, setDraggable, bindDrop};
