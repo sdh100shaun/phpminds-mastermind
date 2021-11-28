@@ -31,7 +31,7 @@ const handleDrop = (e) =>{
     }
     let parent = e.target.parentNode;
     if( parent.classList.contains('row-complete')){
-        const event = new CustomEvent('row-complete', { detail: parent.parentNode });
+        const event = new CustomEvent('row-complete', { detail:{ row: parent.parentNode }});
         event.initEvent('row-complete', true, true);
         parent.dispatchEvent(event);
     }

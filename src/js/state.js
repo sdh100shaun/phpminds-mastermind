@@ -39,7 +39,9 @@ const setCompleteListener = () => {
     let board = document.getElementById('board');
     board.addEventListener('row-complete', ( e) => {
         board.classList.add('complete');
-        console.log(e.detail);
+        if ( e.detail.winner) {
+            board.classList.add('winner');
+        }
     });
 }
 export {saveState, writeBoard, setRowClasses, setCompleteListener}
