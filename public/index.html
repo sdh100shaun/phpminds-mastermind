@@ -1,24 +1,124 @@
-<html>
+<html lang="en">
 <head>
-    <style>
-        input, button { padding: 10px; }
-    </style>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <title>HTML</title>
+    <link rel="stylesheet" href="game.css">
+    <script type="module" src="main.bundle.js"></script>
 </head>
 <body>
-<input type="text" id="message" placeholder="Colour sequence separated by comma" />
-<button onclick="transmitMessage()">Send Sequence</button>
-<script>
-    // Create a new WebSocket.
-    var socket  = new WebSocket('ws://127.0.0.1:8080');
-    function transmitMessage() {
-        // socket.send("{\"0\":\"red\", \"1\":\"green\", \"2\":\"purple\", \"3\":\"yellow\"}");
-        socket.send(document.getElementById('message').value);
-    }
+<h2><img src="phpminds.svg" alt="phpminds logo"/> Mind Games - Mastermind </h2>
+<div class="row">
+    <div class="column">
+        <h2> Counters </h2>
+        <ul>
+            <li><span class="counter-green counter " draggable="true">0</span></li>
+            <li><span class="counter-yellow counter " draggable="true">0</span></li>
+            <li><span class="counter-blue counter" draggable="true">0</span></li>
+            <li><span class="counter-red counter" draggable="true">0</span></li>
+            <li><span class="counter-orange counter" draggable="true">0</span></li>
+            <li><span class="counter-purple counter" draggable="true">0</span></li>
+        </ul>
+    </div>
+    <div class="column">
+        <h2> MASTERMIND </h2>
+        <table class="table" id="board">
+            <tr>
+                <th></th>
+                <th>X</th>
+                <th>X</th>
+                <th>X</th>
+                <th>X</th>
+            </tr>
+            <tr>
+                <td class="number"></td>
+                <td><span class="counter counter-white dropzone">0</span></td>
+                <td><span class="counter counter-white dropzone">0</span></td>
+                <td><span class="counter counter-white dropzone">0</span></td>
+                <td class="row-complete"><span class="counter counter-white dropzone">0</span></td>
+                <td>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
 
-    socket.onmessage = function(e) {
-        alert( e.data );
-    }
-</script>
+                </td>
+            </tr>
+            <tr>
+                <td class="number"></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td class="row-complete" ><span class="counter counter-white">0</span></td>
+                <td>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="number"></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td class="row-complete"><span class="counter counter-white">0</span></td>
+                <td>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="number"></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td class="row-complete"><span class="counter counter-white">0</span></td>
+                <td>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="number"></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td class="row-complete"><span class="counter counter-white">0</span></td>
+                <td>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="number"></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td class="row-complete" ><span class="counter counter-white">0</span></td>
+                <td>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+
+                </td>
+            </tr>
+        </table>
+        <div class="checker">
+            <a href="#" id="btn" class="action-button shadow animate green">Check</a>
+        </div>
+    </div>
+
+</div>
 </body>
 </html>
