@@ -29,6 +29,12 @@ const handleDrop = (e) =>{
     if (dragSrcEl !== e.target) {
         e.target.classList.add(dragSrcEl.classList[0]);
     }
+    let parent = e.target.parentNode;
+    if( parent.classList.contains('row-complete')){
+        const event = new CustomEvent('row-complete', { detail: parent.parentNode });
+        event.initEvent('row-complete', true, true);
+        parent.dispatchEvent(event);
+    }
 }
 
 const handleDragEnter = (event) =>{

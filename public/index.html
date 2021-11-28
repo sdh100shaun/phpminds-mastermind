@@ -1,26 +1,26 @@
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>HTML</title>
-<link rel="stylesheet" href="game.css">
-     <script type="module" src="main.bundle.js"></script>
+    <meta charset="utf-8">
+    <title>HTML</title>
+    <link rel="stylesheet" href="game.css">
+    <script type="module" src="main.bundle.js"></script>
 </head>
 <body>
-   <h2>PHPMinds - Mind Games - Mastermind </h2>
-   <div class="row">
-	  <div class="column" >
-	   <h2> Counters </h2>
-	   <ul>
-            <li><span class="counter-green counter " draggable="true" >0</span></li>
+<h2><img src="phpminds.svg" alt="phpminds logo"/> Mind Games - Mastermind </h2>
+<div class="row">
+    <div class="column">
+        <h2> Counters </h2>
+        <ul>
+            <li><span class="counter-green counter " draggable="true">0</span></li>
             <li><span class="counter-yellow counter " draggable="true">0</span></li>
             <li><span class="counter-blue counter" draggable="true">0</span></li>
             <li><span class="counter-red counter" draggable="true">0</span></li>
-            <li><span class="counter-orange draggable" draggable="true">0</span></li>
+            <li><span class="counter-orange counter" draggable="true">0</span></li>
             <li><span class="counter-purple counter" draggable="true">0</span></li>
-       </ul>
-	  </div>
-	  <div class="column">
-	   <h2> MASTERMIND </h2>
+        </ul>
+    </div>
+    <div class="column">
+        <h2> MASTERMIND </h2>
         <table class="table" id="board">
             <tr>
                 <th></th>
@@ -34,50 +34,92 @@
                 <td><span class="counter counter-white dropzone">0</span></td>
                 <td><span class="counter counter-white dropzone">0</span></td>
                 <td><span class="counter counter-white dropzone">0</span></td>
-                <td><span class="counter counter-white dropzone">0</span></td>
-             </tr>
-             <tr>
-                 <td class="number"></td>
-                <td><span class="counter counter-white">0</span></td>
-                <td><span class="counter counter-white">0</span></td>
-                <td><span class="counter counter-white">0</span></td>
-                <td><span class="counter counter-white">0</span></td>
-             </tr>
-             <tr>
-                 <td class="number"></td>
-                <td><span class="counter counter-white">0</span></td>
-                <td><span class="counter counter-white">0</span></td>
-                <td><span class="counter counter-white">0</span></td>
-                <td><span class="counter counter-white">0</span></td>
-             </tr>
-             <tr>
-                 <td class="number"></td>
-                <td><span class="counter counter-white">0</span></td>
-                <td><span class="counter counter-white">0</span></td>
-                <td><span class="counter counter-white">0</span></td>
-                <td><span class="counter counter-white">0</span></td>
-             </tr>
-            <tr>
-                <td class="number"></td>
-                <td><span class="counter counter-white">0</span></td>
-                <td><span class="counter counter-white">0</span></td>
-                <td><span class="counter counter-white">0</span></td>
-                <td><span class="counter counter-white">0</span></td>
+                <td class="row-complete"><span class="counter counter-white dropzone">0</span></td>
+                <td>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+
+                </td>
             </tr>
             <tr>
                 <td class="number"></td>
                 <td><span class="counter counter-white">0</span></td>
                 <td><span class="counter counter-white">0</span></td>
                 <td><span class="counter counter-white">0</span></td>
+                <td class="row-complete" ><span class="counter counter-white">0</span></td>
+                <td>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="number"></td>
                 <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td class="row-complete"><span class="counter counter-white">0</span></td>
+                <td>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="number"></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td class="row-complete"><span class="counter counter-white">0</span></td>
+                <td>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="number"></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td class="row-complete"><span class="counter counter-white">0</span></td>
+                <td>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="number"></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td><span class="counter counter-white">0</span></td>
+                <td class="row-complete" ><span class="counter counter-white">0</span></td>
+                <td>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+                    <span class=" small-counter">&nbsp</span>
+
+                </td>
             </tr>
         </table>
-          <div class="checker">
-                <a href="#" id="btn" class="action-button shadow animate green">Check</a>
-          </div>
-	  </div>
+        <div class="checker">
+            <a href="#" id="btn" class="action-button shadow animate green">Check</a>
+        </div>
+    </div>
 
-	</div>
+</div>
 
 </body>
 </html>

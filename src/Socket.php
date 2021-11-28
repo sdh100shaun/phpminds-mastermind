@@ -24,13 +24,16 @@ class Socket implements MessageComponentInterface {
     }
 
     public function onMessage(ConnectionInterface $from, $msg) {
-
-        foreach ($this->clients as $client) {
-            if( $from === $client) {
-                $this->masterMind->play(json_decode($msg, true));
+        if ($msg === '__ping__') {
+            $from->send('__pong__');
+        } else {
+            foreach ($this->clients as $client) {
+                if ($from === $client) {
+                    $this->masterMind->play(json_decode($msg, true));
+                }
             }
+            $this->updateClients();
         }
-        $this->updateClients();
     }
 
     private function updateClients():void

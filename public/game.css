@@ -5,7 +5,9 @@
 h1,h2,h3,h4,h5,h6 {
   font-family: 'Oswald', sans-serif;
 }
-
+h2 > img {
+    max-height: 3em;
+}
 body {
     background-color: #fafafa;
     font-family: 'Roboto', sans-serif;
@@ -31,7 +33,21 @@ span.counter{
     display:inline-block;
 }
 
+span.small-counter {
+    width:0.5em;
+    height: 0.5em;
+    border-radius:100%;
+    display:inline-block;
+}
+.small-counter-black{
+    background-color: #000000;
+    color: #000;
+}
 
+.small-counter-white{
+    background-color: #fff;
+    color: #fff;
+}
 .counter-red {
     background-color:#d63031;
     color:#d63031;

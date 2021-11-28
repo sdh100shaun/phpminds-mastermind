@@ -26,4 +26,20 @@ const writeBoard = ( board ) => {
         }
     }
 }
-export {saveState, writeBoard}
+
+const setRowClasses = (board, turn) => {
+    for (let i = 0, row; row = board.rows[i]; i++) {
+        if ( i === (turn + 2 )) {
+        row.classList.add('dropzone');
+        }
+    }
+}
+
+const setCompleteListener = () => {
+    let board = document.getElementById('board');
+    board.addEventListener('row-complete', ( e) => {
+        board.classList.add('complete');
+        console.log(e.detail);
+    });
+}
+export {saveState, writeBoard, setRowClasses, setCompleteListener}
