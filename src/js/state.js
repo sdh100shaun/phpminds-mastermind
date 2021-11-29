@@ -16,7 +16,12 @@ const readState = () => {
 }
 
 const setCounter = (board, guess, turn) => {
-   board
+    let index = 1;
+    console.log(board.rows[turn], guess, turn);
+    for (const counter in guess) {
+        board.rows[turn].cells[index].innerHTML = "<span class=\"counter counter-"+ guess[counter] + "\">0</span>"
+        index++;
+    }
 }
 
 const writeBoard = (board) => {
@@ -75,4 +80,4 @@ const setCompleteListener = () => {
         }
     });
 }
-export {saveState, writeBoard, setRowClasses, setCompleteListener, removeRowClasses};
+export {saveState, writeBoard, setRowClasses, setCompleteListener, removeRowClasses, setCounter};
