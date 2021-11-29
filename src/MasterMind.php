@@ -55,7 +55,7 @@ class MasterMind
         foreach ($guess as $index => $item) {
             $correct[$index] = '';
 
-            if($this->sequence[$index] === $item){
+            if($this->sequence[$index -1] === $item){
                 $correct[$index] = 1;
             }
             elseif ( in_array($item, $this->sequence) ){
@@ -70,7 +70,7 @@ class MasterMind
             return [];
         }
         shuffle($correct);
-        $this-> result = ['sequence' => $this->getSequenceCode(), 'turn'=>$this->turn, 'correct' =>$correct];
+        $this-> result = ['sequence' => $this->getSequenceCode(), 'turn'=>$this->turn, 'correct' =>$correct, 'guess' => $guess];
         return  $this->result;
     }
 

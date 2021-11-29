@@ -15,6 +15,10 @@ const readState = () => {
     return ls.get('state');
 }
 
+const setCounter = (board, guess, turn) => {
+   board
+}
+
 const writeBoard = (board) => {
     let state = readState()
     for (const stateKey in state) {
@@ -28,9 +32,24 @@ const writeBoard = (board) => {
 }
 
 const setRowClasses = (board, turn) => {
+    console.log(board, turn);
     for (let i = 0, row; row = board.rows[i]; i++) {
-        if (i === (turn + 2)) {
-            row.classList.add('dropzone');
+        if (i === (turn + 1)) {
+            row.classList.add('turn');
+           let counters = document.querySelectorAll('.counter-white');
+           for (let j = 0, counter; counter = counters[j]; j++) {
+               if( counter.parentNode === row ) {
+                   counter.classList.add('dropzone');
+               }
+           }
+        }
+    }
+}
+
+const removeRowClasses = (board, turn) => {
+    for (let i = 0, row; row = board.rows[i]; i++) {
+        if (i === (turn + 1)) {
+            row.classList.remove('dropzone');
         }
     }
 }
@@ -51,9 +70,9 @@ const setCompleteListener = () => {
 
             if (Object.keys(found).length === 4) {
                 board.classList.add('complete');
-                document.getElementById('btn').setAttribute('data-guess',JSON.stringify(found));
+                document.getElementById('btn').setAttribute('data-guess', JSON.stringify(found));
             }
         }
     });
 }
-export {saveState, writeBoard, setRowClasses, setCompleteListener}
+export {saveState, writeBoard, setRowClasses, setCompleteListener, removeRowClasses};

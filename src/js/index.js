@@ -1,11 +1,12 @@
 import {init, bindCheck, sendMessage} from './message';
-import {writeBoard, saveState, setCompleteListener} from './state';
+import {writeBoard, saveState, setCompleteListener, setRowClasses, removeRowClasses, setCounter} from './state';
 import { bind, bindDrop } from './dragdrop';
 
 
 const url = '127.0.0.1:8085';
-saveState(document.getElementById('board'));
-writeBoard(document.getElementById('board'));
+const  board = document.getElementById('board');
+//saveState(board);
+//writeBoard(board);
 
 bind();
 bindDrop();
@@ -18,7 +19,10 @@ init(url, function (e) {
        console.log('pong');
        return;
     }
+
     alert(e.data)
+    setRowClasses(board, JSON.parse(e.data).turn)
+    setCounter(board, JSON.parse(e.data).guess, JSON.parse(e.data).turn)
 });
 
 
