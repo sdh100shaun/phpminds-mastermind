@@ -19,7 +19,7 @@ class Socket implements MessageComponentInterface {
     public function onOpen(ConnectionInterface $conn) {
         // Store the new connection to send messages to later
         $this->clients->attach($conn);
-        $this->masterMind = new MasterMind(10);
+        $this->masterMind = new MasterMind(6);
 
     }
 

@@ -7,6 +7,11 @@ const init =  (url, callback) => {
         console.log('Connected to server');
         setInterval(ping, 30000);
     }
+    ws.onclose = () => {
+        console.log('Disconnected from server');
+        init(url, callback);
+
+    }
     return this;
 }
 

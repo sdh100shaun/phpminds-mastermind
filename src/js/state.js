@@ -53,6 +53,10 @@ const setRowClasses = (board, turn, bindDrop) => {
     bindDrop();
 }
 
+
+
+
+
 const removeRowClasses = (board, turn) => {
     for (let i = 0, row; row = board.rows[i]; i++) {
         if (i === (turn + 1)) {
