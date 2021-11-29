@@ -36,19 +36,21 @@ const writeBoard = (board) => {
     }
 }
 
-const setRowClasses = (board, turn) => {
+const setRowClasses = (board, turn, bindDrop) => {
     console.log(board, turn);
     for (let i = 0, row; row = board.rows[i]; i++) {
         if (i === (turn + 1)) {
             row.classList.add('turn');
            let counters = document.querySelectorAll('.counter-white');
            for (let j = 0, counter; counter = counters[j]; j++) {
-               if( counter.parentNode === row ) {
+               console.log(counter);
+               if( counter.closest(".turn") === row) {
                    counter.classList.add('dropzone');
                }
            }
         }
     }
+    bindDrop();
 }
 
 const removeRowClasses = (board, turn) => {

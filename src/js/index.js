@@ -21,7 +21,7 @@ init(url, function (e) {
     }
 
     alert(e.data)
-    setRowClasses(board, JSON.parse(e.data).turn)
+    setRowClasses(board, JSON.parse(e.data).turn, bindDrop)
     setCounter(board, JSON.parse(e.data).guess, JSON.parse(e.data).turn)
 });
 
