@@ -21,7 +21,10 @@ const sendMessage = (message) => {
 
 const bindCheck = ( button, callback ) => {
     button.addEventListener('click', function (e) {
-        callback(e.target.dataset.guess);
+        if( e.target.dataset.guess !== undefined  && e.target.dataset.guess !== '' ) {
+            callback(e.target.dataset.guess);
+            e.target.dataset.guess = '';
+        }
     });
 }
 

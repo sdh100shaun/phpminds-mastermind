@@ -34,8 +34,8 @@ span.counter{
 }
 
 span.small-counter {
-    width:0.5em;
-    height: 0.5em;
+    width:1.0em;
+    height: 1.0em;
     border-radius:100%;
     display:inline-block;
 }

@@ -40,7 +40,6 @@ const handleDrop = (e) =>{
 const handleDragEnter = (event) =>{
     const target = event.target;
     event.preventDefault();
-    console.log(event, dragSrcEl, target);
     if (target) {
         // Set the dropEffect to move
         event.dataTransfer.dropEffect = 'move';

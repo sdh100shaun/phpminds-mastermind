@@ -1,9 +1,9 @@
 import {init, bindCheck, sendMessage} from './message';
-import {writeBoard, saveState, setCompleteListener, setRowClasses, removeRowClasses, setCounter} from './state';
+import {writeBoard, saveState, setCompleteListener, setRowClasses, checkWin, setCounter, setHint} from './state';
 import { bind, bindDrop } from './dragdrop';
 
 
-const url = '127.0.0.1:8085';
+const url = 'localhost:8085';
 const  board = document.getElementById('board');
 //saveState(board);
 //writeBoard(board);
@@ -20,9 +20,12 @@ init(url, function (e) {
        return;
     }
 
-    alert(e.data)
-    setRowClasses(board, JSON.parse(e.data).turn, bindDrop)
-    setCounter(board, JSON.parse(e.data).guess, JSON.parse(e.data).turn)
+    const data = JSON.parse(e.data);
+    checkWin(data.correct) ? alert ('You win!') : data.turn === 6 ? alert('You lose!'): console.log('try again');
+   // alert(e.data)
+    setRowClasses(board, data.turn, bindDrop);
+    setCounter(board, data.guess, data.turn);
+    setHint(board, data.correct, data.turn);
 });
 
 

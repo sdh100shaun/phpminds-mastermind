@@ -24,6 +24,32 @@ const setCounter = (board, guess, turn) => {
     }
 }
 
+const setHint = ( board, current, turn ) => {
+    let classes = [];
+
+    current.forEach((item, index) => {
+        if (item === 0) {
+            classes.push('small-counter-white');
+        } else if (item === 1) {
+            classes.push('small-counter-black');
+        }
+    });
+    let index = 0
+    Array.from(board.rows[turn].cells[5].children).forEach((item) => {
+        if(classes.length > index) {
+            item.classList.add(classes[index]);
+        }
+        index ++;
+    });
+
+}
+
+const checkWin = (current) => {
+   return 4 === current.reduce(function(previousValue, currentValue){
+        return currentValue + previousValue;
+    });
+
+}
 const writeBoard = (board) => {
     let state = readState()
     for (const stateKey in state) {
@@ -86,4 +112,4 @@ const setCompleteListener = () => {
         }
     });
 }
-export {saveState, writeBoard, setRowClasses, setCompleteListener, removeRowClasses, setCounter};
+export {saveState, writeBoard, setRowClasses, setCompleteListener, removeRowClasses, setCounter, setHint, checkWin};
