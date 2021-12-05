@@ -7,7 +7,7 @@ namespace ShaunHare;
 class MasterMind
 {
 
-    private array $sequence = [];
+    private array $sequence;
 
     public int $numberOfChances = 6;
         private int $turn = 0;
