@@ -9,14 +9,29 @@ class MasterMind
 
     private array $sequence;
 
-    public function __construct(
-        public int $numberOfChances,
-        private int $turn = 0,
-        public array $result = [],
-    ) {
+    public int $numberOfChances;
+        private int $turn = 0;
+        public array $result = [];
+
+    private function __construct() {}
+
+    public static function getInstance(): MasterMind
+    {
+        static $instance = null;
+        if ($instance === null) {
+            $instance = new MasterMind();
+        }
+        return $instance;
+    }
+    public function reset(int $numberOfChances): void
+    {
+        $this->numberOfChances = $numberOfChances;
+    }
+
+    private function generateSequence()
+    {
         $gamePegs = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
         $this->sequence = [];
-
         shuffle($gamePegs);
         for ( $i = 0 ; $i < 4 ; $i++ ) {
             $this->sequence[$i] = array_pop($gamePegs);
@@ -71,6 +86,10 @@ class MasterMind
         }
         shuffle($correct);
         $this->result = ['sequence' => $this->getSequenceCode(), 'turn'=>$this->turn, 'correct' =>$correct, 'guess' => $guess];
+        if($this->turn === 6) {
+            $this->turn =0;
+            $this->generateSequence();
+        }
         return  $this->result;
     }
 
