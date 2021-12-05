@@ -9,7 +9,7 @@ class MasterMind
 
     private array $sequence = [];
 
-    public int $numberOfChances;
+    public int $numberOfChances = 6;
         private int $turn = 0;
         public array $result = [];
 
