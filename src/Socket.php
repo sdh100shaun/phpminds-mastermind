@@ -8,10 +8,9 @@ use Ratchet\{MessageComponentInterface, ConnectionInterface};
 class Socket implements MessageComponentInterface {
 
     private MasterMind $masterMind;
+    protected ?\SplObjectStorage $clients;
 
-    public function __construct(
-        protected ?\SplObjectStorage $clients
-    )
+    public function __construct()
     {
         $this->clients = new \SplObjectStorage;
     }
