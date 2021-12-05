@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+
+  web:
+    image: nginx
+    links:
+      - server
+    volumes:
+      - ./public:/usr/share/nginx/html
+    ports:
+      - "8080:80"
+    environment:
+      - NGINX_HOST=mastermind.phpminds.org
+      - NGINX_PORT=80
+
+  server:
+    image: php:8.0.13-fpm-alpine3.13
+    volumes:
+      - ./:/app
+    ports:
+      - "8085:8085"
+    command: php /app/src/Server.php
