@@ -92,7 +92,6 @@ const storeSequence = (board,sequence) => {
     });
 }
 
-
 const removeRowClasses = (board, turn) => {
     for (let i = 0, row; row = board.rows[i]; i++) {
         if (i === (turn + 1)) {

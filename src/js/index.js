@@ -3,7 +3,7 @@ import {writeBoard, saveState, setCompleteListener, setRowClasses, checkWin, set
 import { bind, bindDrop } from './dragdrop';
 
 
-const url = 'mastermind.codesho.ws/ws';
+const url = 'mastermind.codesho.ws/ws/';
 const  board = document.getElementById('board');
 //saveState(board);
 //writeBoard(board);
