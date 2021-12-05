@@ -23,7 +23,7 @@ init(url, function (e) {
     const data = JSON.parse(e.data);
     const disable = data.player !== undefined ? data.player : false;
     checkWin(data.correct) ? alert ('Winner !') : data.turn === 6 ? alert('bad luck !'): console.log('try again');
-    disablePlayer(disable);
+   // disablePlayer(disable);
     alert(JSON.stringify(data));
     storeSequence(board,data.sequence);
     setRowClasses(board, data.turn, bindDrop);
