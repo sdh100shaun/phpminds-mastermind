@@ -23,7 +23,11 @@ const setCounter = (board, guess, turn) => {
         index++;
     }
 }
-
+const disablePlayer = (player) => {
+  if(!player) {
+    document.querySelector('#btn').setAttribute('hidden', 'hidden');
+  }
+}
 const setHint = ( board, current, turn ) => {
     let classes = [];
 
@@ -112,4 +116,4 @@ const setCompleteListener = () => {
         }
     });
 }
-export {saveState, writeBoard, setRowClasses, setCompleteListener, removeRowClasses, setCounter, setHint, checkWin};
+export {saveState, writeBoard, setRowClasses, setCompleteListener, removeRowClasses, setCounter, setHint, checkWin,disablePlayer};

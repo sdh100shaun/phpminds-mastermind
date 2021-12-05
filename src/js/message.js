@@ -1,7 +1,7 @@
 let ws;
 
 const init =  (url, callback) => {
-    ws = new WebSocket('ws://' + url);
+    ws = new WebSocket('wss://' + url);
     ws.onmessage = callback
     ws.onopen = () => {
         console.log('Connected to server');

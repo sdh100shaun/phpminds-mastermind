@@ -65,12 +65,12 @@ class MasterMind
 
         $this->turn++;
 
-        if($this->turn >= $this->numberOfChances)
+        if($this->turn > $this->numberOfChances)
         {
             return [];
         }
         shuffle($correct);
-        $this-> result = ['sequence' => $this->getSequenceCode(), 'turn'=>$this->turn, 'correct' =>$correct, 'guess' => $guess];
+        $this->result = ['sequence' => $this->getSequenceCode(), 'turn'=>$this->turn, 'correct' =>$correct, 'guess' => $guess];
         return  $this->result;
     }
 

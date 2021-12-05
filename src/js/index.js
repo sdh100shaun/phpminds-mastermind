@@ -1,9 +1,9 @@
 import {init, bindCheck, sendMessage} from './message';
-import {writeBoard, saveState, setCompleteListener, setRowClasses, checkWin, setCounter, setHint} from './state';
+import {writeBoard, saveState, setCompleteListener, setRowClasses, checkWin, setCounter, setHint,disablePlayer} from './state';
 import { bind, bindDrop } from './dragdrop';
 
 
-const url = 'localhost:8085';
+const url = 'mastermind.codesho.ws/ws';
 const  board = document.getElementById('board');
 //saveState(board);
 //writeBoard(board);
@@ -21,8 +21,10 @@ init(url, function (e) {
     }
 
     const data = JSON.parse(e.data);
-    checkWin(data.correct) ? alert ('You win!') : data.turn === 6 ? alert('You lose!'): console.log('try again');
-   // alert(e.data)
+    const disable = data.player !== undefined ? data.player : false;
+    checkWin(data.correct) ? alert ('Winner !') : data.turn === 6 ? alert('bad luck !'): console.log('try again');
+    disablePlayer(disable);
+
     setRowClasses(board, data.turn, bindDrop);
     setCounter(board, data.guess, data.turn);
     setHint(board, data.correct, data.turn);

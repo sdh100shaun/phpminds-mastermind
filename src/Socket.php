@@ -29,18 +29,23 @@ class Socket implements MessageComponentInterface {
         } else {
             foreach ($this->clients as $client) {
                 if ($from === $client) {
-                    echo "Sending to client: " . $msg . "\n";
                     $this->masterMind->play(json_decode($msg, true));
                 }
             }
-            $this->updateClients();
+            $this->updateClients($from);
         }
     }
 
-    private function updateClients():void
+    private function updateClients(ConnectionInterface $from):void
     {
         foreach ($this->clients as $client) {
-            $client->send(json_encode($this->masterMind->result));
+            if ($from === $client) {
+                $client->send(json_encode($this->masterMind->result + ['player' => true]));
+
+            }else {
+                $client->send(json_encode($this->masterMind->result));
+            }
+
         }
     }
 
