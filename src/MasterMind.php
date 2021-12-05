@@ -15,6 +15,7 @@ class MasterMind
 
     private function __construct(array $sequence) {
         $this->sequence = $sequence;
+        $this->generateSequence();
     }
 
     public static function getInstance(): MasterMind
