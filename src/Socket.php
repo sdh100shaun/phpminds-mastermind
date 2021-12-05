@@ -19,6 +19,7 @@ class Socket implements MessageComponentInterface {
         // Store the new connection to send messages to later
         $this->clients->attach($conn);
         $this->masterMind = MasterMind::getInstance();
+        $this->masterMind->getSequence();
 
     }
 

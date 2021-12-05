@@ -30,11 +30,13 @@ class MasterMind
 
     private function generateSequence()
     {
-        $gamePegs = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
-        $this->sequence = [];
-        shuffle($gamePegs);
-        for ( $i = 0 ; $i < 4 ; $i++ ) {
-            $this->sequence[$i] = array_pop($gamePegs);
+        if(!isset($this->sequence) || empty($this->getSequence())) {
+            $gamePegs = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
+            $this->sequence = [];
+            shuffle($gamePegs);
+            for ($i = 0; $i < 4; $i++) {
+                $this->sequence[$i] = array_pop($gamePegs);
+            }
         }
     }
 
