@@ -7,7 +7,7 @@ namespace ShaunHare;
 class MasterMind
 {
 
-    private array $sequence;
+    private array $sequence = [];
 
     public int $numberOfChances;
         private int $turn = 0;
@@ -32,7 +32,6 @@ class MasterMind
     {
         if(empty($this->sequence)) {
             $gamePegs = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
-            $this->sequence = [];
             shuffle($gamePegs);
             for ($i = 0; $i < 4; $i++) {
                 $this->sequence[$i] = array_pop($gamePegs);
