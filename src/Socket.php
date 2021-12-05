@@ -10,7 +10,7 @@ class Socket implements MessageComponentInterface {
     private MasterMind $masterMind;
 
     public function __construct(
-        public ?\SplObjectStorage $clients = null
+        protected ?\SplObjectStorage $clients
     )
     {
         $this->clients = new \SplObjectStorage;
@@ -59,4 +59,6 @@ class Socket implements MessageComponentInterface {
 
         $conn->close();
     }
+
+
 }
