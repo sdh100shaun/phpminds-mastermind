@@ -30,7 +30,7 @@ class MasterMind
 
     private function generateSequence()
     {
-        if(!isset($this->sequence) || empty($this->getSequence())) {
+        if(empty($this->getSequence())) {
             $gamePegs = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
             $this->sequence = [];
             shuffle($gamePegs);
