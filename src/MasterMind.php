@@ -91,7 +91,7 @@ class MasterMind
         }
         shuffle($correct);
         $this->result = ['sequence' => $this->getSequenceCode(), 'turn'=>$this->turn, 'correct' =>$correct, 'guess' => $guess];
-        if($this->turn === 6) {
+        if($this->turn === 6 || $correct === [1,1,1,1]){
             $this->turn =0;
             $this->generateSequence();
         }
