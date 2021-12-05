@@ -84,7 +84,13 @@ const setRowClasses = (board, turn, bindDrop) => {
 }
 
 
-
+const storeSequence = (board,sequence) => {
+    let index = 0;
+    board.querySelectorAll("th").forEach((item) => {
+        item.dataset.sequence = sequence[index];
+        index++;
+    });
+}
 
 
 const removeRowClasses = (board, turn) => {
@@ -116,4 +122,4 @@ const setCompleteListener = () => {
         }
     });
 }
-export {saveState, writeBoard, setRowClasses, setCompleteListener, removeRowClasses, setCounter, setHint, checkWin,disablePlayer};
+export {saveState, writeBoard, setRowClasses, setCompleteListener, removeRowClasses, setCounter, setHint, checkWin,disablePlayer, storeSequence};
