@@ -13,13 +13,16 @@ class MasterMind
         private int $turn = 0;
         public array $result = [];
 
-    private function __construct() {}
+    private function __construct(array $sequence) {
+        $this->sequence = $sequence;
+    }
 
     public static function getInstance(): MasterMind
     {
+
         static $instance = null;
         if ($instance === null) {
-            $instance = new MasterMind();
+            $instance = new MasterMind([]);
         }
         return $instance;
     }
