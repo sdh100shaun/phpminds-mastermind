@@ -8,7 +8,8 @@
     ],
     "require": {
         "symfony/console": "^5.3",
-        "cboden/ratchet": "^0.4.3"
+        "cboden/ratchet": "^0.4.3",
+        "guzzlehttp/psr7": "1.8.4"
     },
     "autoload": {
         "psr-4": {
